@@ -14,8 +14,8 @@
 2) Discord Token Login
 
 ## TODO
-- Red Selfbot
-- UserID Info
-- Webhook Spammer
-- Webhook URL Bruteforcer
-- 
+- [ ] Red Selfbot
+- [ ] UserID Info
+- [ ] Webhook Spammer
+- [ ] Webhook URL Bruteforcer
+- [ ] Message Logger
