@@ -56,6 +56,8 @@ welcome()
 #<---options start--->
 print(Fore.CYAN + "Available tools (input the number at the side):".center(os.get_terminal_size().columns))
 print("\n\n")
+print(Fore.BLUE + "Exit [0]".center(os.get_terminal_size().columns))
+print("\n")
 print(Fore.BLUE + "Token Bruteforcer [1]".center(os.get_terminal_size().columns))
 print("\n")
 print(Fore.BLUE + "Login With a Token [2]".center(os.get_terminal_size().columns))
@@ -70,11 +72,17 @@ print(Fore.BLUE + "Webhook Spammer [4]".center(os.get_terminal_size().columns))
 print("\n\n\n")
 col_size = os.get_terminal_size().columns
 num = round(col_size/4)
-a = " >>  "
+a = ">>  "
 a2 = "".join([' ' for x in range(0, num)])
 print(Fore.BLUE + a2 + a, end='')
 inp = int(input())
 
+if inp == 0:
+  if os.name == 'nt':
+    os.system('cls')
+  else:
+    os.system('clear')
+  exit(0)
 if inp == 1:
   bruteforce_token()
 if inp == 2:
