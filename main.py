@@ -19,6 +19,7 @@ from token_bruteforce import bruteforce_token
 from token_login import tokenlogin
 from userid_info import lookup
 from hook_spammer import spam_webhook
+from red_rpc import custom_rpc
 #<---imports end--->
 
 #<---graphics setup--->
@@ -65,6 +66,8 @@ print("\n")
 print(Fore.BLUE + "UserID Lookup [3]".center(os.get_terminal_size().columns))
 print("\n")
 print(Fore.BLUE + "Webhook Spammer [4]".center(os.get_terminal_size().columns))
+print("\n")
+print(Fore.BLUE + "Custom Status Message [5]".center(os.get_terminal_size().columns))
 #<---options end--->
 
 
@@ -91,6 +94,8 @@ if inp == 3:
   lookup()
 if inp == 4:
   spam_webhook()
+if inp == 5:
+  custom_rpc()
 #<---main code end--->
 
 
