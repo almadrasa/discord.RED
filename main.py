@@ -17,6 +17,7 @@ from random import choice as ch
 import requests
 from token_bruteforce import bruteforce_token
 from token_login import tokenlogin
+from userid_info import lookup
 #<---imports end--->
 
 #<---graphics setup--->
@@ -57,6 +58,8 @@ print("\n\n")
 print(Fore.BLUE + "Token Bruteforcer [1]".center(os.get_terminal_size().columns))
 print("\n")
 print(Fore.BLUE + "Login With a Token [2]".center(os.get_terminal_size().columns))
+print("\n")
+print(Fore.BLUE + "UserID Lookup [3]".center(os.get_terminal_size().columns))
 #<---options end--->
 
 
@@ -74,8 +77,7 @@ if inp == 1:
 if inp == 2:
   tokenlogin()
 if inp == 3:
-  #idk what to do here yet lol
-  lipsum=1
+  lookup()
 #<---main code end--->
 
 
