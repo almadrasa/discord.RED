@@ -29,7 +29,8 @@
 - Finally, run the command `py main.py`, and you're all set!
 
 ## Community
-Join the [support server](https://discord.gg/XecbDdhfUD)!
+Join the [support server](https://discord.gg/XecbDdhfUD)!<br />
+Also, check out [the webiste](https://13-05.github.io/dsc.red)!
 
 ## About
 this project was thought up shortly after i created [this](https://github.com/13-05/disc-python-hacks) repo, and dsc.RED's end goal is to exploit every weakness exposed in the latter.
