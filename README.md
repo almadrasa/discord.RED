@@ -26,4 +26,4 @@
 - Finally, run the command `py main.py`, and you're all set!
 
 ## About
-this project was thought up shortly after i created [this](https://github.com/13-05/disc-python-hacks) repo, and dsc.RED's ultimate goal is to exploit every weakness exposed in the latter.
+this project was thought up shortly after i created [this](https://github.com/13-05/disc-python-hacks) repo, and dsc.RED's ultimate goal is to abuse every weakness exposed in the latter.
