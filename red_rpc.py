@@ -29,4 +29,4 @@ def custom_rpc():
     print(f"{Fore.RED}{client.user}'s status{Fore.MAGENTA} is now {Fore.BLUE}\"{STATUS}\"{Fore.MAGENTA}.")
 
 
-  client.run(TOKEN)
+  client.run(TOKEN,bot=False)
