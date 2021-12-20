@@ -23,6 +23,7 @@
 - [ ] Webhook URL Bruteforcer
 - [ ] Message Logger
 - [x] Custom Status Message (RPC?)
+- [ ] Account Disabler
 
 ## Installation & Use
 - First, Open your terminal and run the command `git clone https://github.com/13-05/discord.RED.git`
