@@ -13,11 +13,12 @@
 1) Discord Token Bruteforcer
 2) Discord Token Login
 3) UserID Lookup
+4) Webhook Spammer
 
 ## TODO
 - [ ] Red Selfbot
 - [x] UserID Lookup
-- [ ] Webhook Spammer
+- [x] Webhook Spammer
 - [ ] Webhook URL Bruteforcer
 - [ ] Message Logger
 
