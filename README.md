@@ -21,6 +21,7 @@
 - [x] Webhook Spammer
 - [ ] Webhook URL Bruteforcer
 - [ ] Message Logger
+- [ ] Custom Status Message (RPC?)
 
 ## Installation & Use
 - First, Open your terminal and run the command `git clone https://github.com/13-05/discord.RED.git`
