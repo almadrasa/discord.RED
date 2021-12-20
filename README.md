@@ -14,6 +14,7 @@
 2) Discord Token Login
 3) UserID Lookup
 4) Webhook Spammer
+5) Custom Status Message
 
 ## TODO
 - [ ] Red Selfbot
@@ -21,7 +22,7 @@
 - [x] Webhook Spammer
 - [ ] Webhook URL Bruteforcer
 - [ ] Message Logger
-- [ ] Custom Status Message (RPC?)
+- [x] Custom Status Message (RPC?)
 
 ## Installation & Use
 - First, Open your terminal and run the command `git clone https://github.com/13-05/discord.RED.git`
