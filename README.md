@@ -12,10 +12,11 @@
 ## Features
 1) Discord Token Bruteforcer
 2) Discord Token Login
+3) UserID Lookup
 
 ## TODO
 - [ ] Red Selfbot
-- [x] UserID Info
+- [x] UserID Lookup
 - [ ] Webhook Spammer
 - [ ] Webhook URL Bruteforcer
 - [ ] Message Logger
