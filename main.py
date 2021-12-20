@@ -18,6 +18,7 @@ import requests
 from token_bruteforce import bruteforce_token
 from token_login import tokenlogin
 from userid_info import lookup
+from hook_spammer import spam_webhook
 #<---imports end--->
 
 #<---graphics setup--->
@@ -43,7 +44,7 @@ def welcome():
   print(Fore.RED + ".%%..%%...%%%%...%%..............%%%%%...%%%%....%%..%%.".center(os.get_terminal_size().columns))
   print(Fore.RED + ".%%..%%......%%..%%..%%..........%%..%%..%%......%%..%%.".center(os.get_terminal_size().columns))
   print(Fore.RED + ".%%%%%....%%%%....%%%%.....%%....%%..%%..%%%%%%..%%%%%..".center(os.get_terminal_size().columns))
-  print(Fore.RED + "........................................................\n".center(os.get_terminal_size().columns))
+  print(Fore.RED + " ........................................................\n".center(os.get_terminal_size().columns))
   print(Fore.WHITE + "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n".center(os.get_terminal_size().columns))
   col_size = os.get_terminal_size().columns
   inp = "the discord cracking suite."
@@ -60,6 +61,8 @@ print("\n")
 print(Fore.BLUE + "Login With a Token [2]".center(os.get_terminal_size().columns))
 print("\n")
 print(Fore.BLUE + "UserID Lookup [3]".center(os.get_terminal_size().columns))
+print("\n")
+print(Fore.BLUE + "Webhook Spammer [4]".center(os.get_terminal_size().columns))
 #<---options end--->
 
 
@@ -78,6 +81,8 @@ if inp == 2:
   tokenlogin()
 if inp == 3:
   lookup()
+if inp == 4:
+  spam_webhook()
 #<---main code end--->
 
 
