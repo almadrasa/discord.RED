@@ -22,7 +22,7 @@
 - [ ] Webhook URL Bruteforcer
 - [ ] Message Logger
 
-## Use
+## Installation & Use
 - First, Open your terminal and run the command `git clone https://github.com/13-05/discord.RED.git`
 - Then, `cd` into the `discord.RED` folder that was just created
 - Finally, run the command `py main.py`, and you're all set!
