@@ -79,11 +79,11 @@ def red_start():
         "username" : "Red Calibration Sequence"
     }
   y = requests.post(b, json=hook_data)
-  if int(y.status_code) == 400:
+  if int(y.status_code) == 200:
+    print(f"{Fore.BLUE}Hook is valid, continuing Red's startup.")
+  else:
     print(f"{Fore.YELLOW}The webhook URL located in red_hook.txt is invalid. Replace it with a valid discord webhook, then Red can run.")
     exit(0)
-  else:
-    print(f"{Fore.BLUE}Hook is valid, continuing Red's startup.")
 
   # assigning globals
   try:
