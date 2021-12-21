@@ -17,7 +17,7 @@
 5) Custom Status Message
 
 ## TODO
-- [ ] Red Selfbot
+- [ ] Red Selfbot (being worked on now!!)
 - [x] UserID Lookup
 - [x] Webhook Spammer
 - [ ] Webhook URL Bruteforcer
