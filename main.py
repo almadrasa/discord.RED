@@ -51,7 +51,14 @@ try:
   from random import choice as ch
 except ModuleNotFoundError:
   install("random")
-
+try:
+  from datetime import datetime
+except ModuleNotFoundError:
+  install("datetime")
+try:
+  import time
+except ModuleNotFoundError:
+  install("time")
 
 #<---imports end--->
 
