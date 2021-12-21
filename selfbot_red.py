@@ -29,6 +29,11 @@ try:
   import time
 except ModuleNotFoundError:
   install("time")
+try:
+  import random
+except ModuleNotFoundError:
+  install("random")
+
 #<---FUNCTION START--->
 def red_start():
   # defining clear function
@@ -155,7 +160,6 @@ def red_start():
     def onmsg(resp):
       if resp.event.message:
           msg = resp.parsed.auto()
-          guild = msg['guild_id']
           channel = msg['channel_id']
           username = msg['author']['username']
           discrim = msg['author']['discriminator']
@@ -168,7 +172,7 @@ def red_start():
           elif content == "r.help":
             bot.deleteMessage(msg['channel_id'], msg['id'])
             you = bot.gateway.session.user['id']
-            embed_with("__Red's Commands:__", "- `r.help`: displays this message\n- `r.ping`: gets the client's latency (NOTE: you must wait about 30 secs. after starting Red to run `r.ping`.)\n- `r.dadjoke`: fetch a random dad joke from the [icanhazdadjoke API](https://icanhazdadjoke.com/api)\n- `r.ascii <text>`: converts the input text into figlet characters!\n- `r.crypto`: fetches the current price for Monero, Bitcoin, and Ethereum (in USD), using the [CryptoCompare API](https://www.cryptocompare.com/)!\n- `r.servinfo`: gets information about the current server\n- `r.nuke`: spam-pings the owner of whatever server you run it in (not really a nuke lol)\n- `r.disc-hacks`: provides you with a list of Discord's vulnerabilities!\n- `r.userinfo <userid>`: gives you information about a certain user; using a custom [discord.id API](https://discordid.13-05.repl.co/)")
+            embed_with("__Red's Commands:__", "- `r.help`: displays this message\n- `r.ping`: gets the client's latency (NOTE: you must wait about 30 secs. after starting Red to run `r.ping`.)\n- `r.dadjoke`: fetch a random dad joke from the [icanhazdadjoke API](https://icanhazdadjoke.com/api)\n- `r.ascii <text>`: converts the input text into figlet characters!\n- `r.crypto`: fetches the current price for Monero, Bitcoin, and Ethereum (in USD), using the [CryptoCompare API](https://www.cryptocompare.com/)!\n- `r.servinfo`: gets information about the current server\n- `r.nuke`: spam-pings the owner of whatever server you run it in (not really a nuke lol)\n- `r.disc-hacks`: provides you with a list of Discord's vulnerabilities!\n- `r.userinfo <userid>`: gives you information about a certain user; using a custom [discord.id API](https://discordid.13-05.repl.co/)\n- `r.howgay`: tells you how gay you are (lol)\n- `r.8ball <question>`: the magical 8-ball will determine your fate")
 
 
           elif content == "r.ping":
@@ -194,12 +198,15 @@ def red_start():
             ownr = str(bot.gateway.session.guild(msg['guild_id']).owner)
             x = requests.get(f'https://discordid.13-05.repl.co/api/{ownr}')
             j = Json(x.text)
-            embed_with(f"{serv_name}'s Stats", f"Member count: {memb_ct}\nServer Description: {descr}\nOwner: {j.user.tag}")
+            a = bot.gateway.session.guild(msg['guild_id']).icon
+            embed_with_author(f"{serv_name}'s Stats", f"Member count: {memb_ct}\nServer Description: {descr}\nOwner: {j.user.tag}", f"https://cdn.discordapp.com/icons/{msg['guild_id']}/{a}")
 
 
           elif content == "r.dadjoke":
             bot.deleteMessage(msg['channel_id'], msg['id'])
-            data = {"User-Agent": "Mozilla/5.0 (compatible; Konqueror/3.5; Linux) KHTML/3.5.10 (like Gecko) (Kubuntu)", "Accept": "text/plain"}
+            useragents = ['Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0)','Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 'Mozilla/5.0 (Macintosh; U; PPC Mac OS X; en) AppleWebKit/125.2 (KHTML, like Gecko) Safari/125.8', 'Mozilla/5.0 (compatible; Konqueror/3.5; Linux) KHTML/3.5.10 (like Gecko) (Kubuntu)', 'Mozilla/5.0 (Windows; U; Windows XP) Gecko MultiZilla/1.6.1.0a']
+            USERAGENT = random.choice(useragents)
+            data = {"User-Agent": USERAGENT, "Accept": "text/plain"}
             r = requests.get('https://icanhazdadjoke.com/', headers=data)
             embed_with("Dad Joke", r.text)
 
@@ -253,7 +260,18 @@ def red_start():
             created = int(full.user.createdTimestamp)/1000.0
             time_obj = datetime.datetime.fromtimestamp(created).strftime('%Y-%m-%d %H:%M:%S.%f')
             embed_with_author(f"{full.user.tag}'s Stats", f"Username: {full.user.tag}\nBot?: {full.user.bot}\nCreated at: {time_obj}", f"{full.user.displayAvatarURL}")
-            
+
+
+          elif content.startswith("r.howgay"):
+            bot.deleteMessage(msg['channel_id'], msg['id'])
+            embed_with("Howgay", f":rainbow_flag::rainbow_flag: <@{msg['author']['id']}> is {random.randint(1,100)}% gay :rainbow_flag::rainbow_flag:")
+
+          elif content.startswith("r.8ball"):
+            bot.deleteMessage(msg['channel_id'], msg['id'])
+            question = content[7:]
+            OUTPUTS = ['Maybe, just wait and see.', 'Definitely not.', 'Yes.']
+            choice = random.choice(OUTPUTS)
+            embed_with_author(f"{question}", f"{choice}", "https://raw.githubusercontent.com/13-05/discord.RED/main/images/8ball.webp")
 
 
 
