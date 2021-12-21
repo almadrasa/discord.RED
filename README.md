@@ -15,9 +15,10 @@
 3) UserID Lookup
 4) Webhook Spammer
 5) Custom Status Message
+6) Red Selfbot (not fully implemented yet, but it's there)
 
 ## TODO
-- [ ] Red Selfbot (being worked on now!!)
+- [x] Red Selfbot (being worked on now!!)
 - [x] UserID Lookup
 - [x] Webhook Spammer
 - [ ] Webhook URL Bruteforcer
