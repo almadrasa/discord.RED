@@ -2,24 +2,57 @@
 
 
 #<---imports start--->
-import discum
-import asyncio
-import colorama
-from colorama import Fore, Back, Style
-from colorama import init
 import os
-import time
-import asyncio
-from base64 import b64encode as b64
-from base64 import b64decode
-import base64
-from random import choice as ch
+import sys
 import requests
 from token_bruteforce import bruteforce_token
 from token_login import tokenlogin
 from userid_info import lookup
 from hook_spammer import spam_webhook
 from red_rpc import custom_rpc
+from selfbot_red import red_start
+
+def install(package):
+  os.system(f"{sys.executable} -m pip install {package}")
+
+try:
+  import discum
+except ModuleNotFoundError:
+  install("discum")
+try:
+  import asyncio
+except ModuleNotFoundError:
+  install("asyncio")
+try:
+  import colorama
+  from colorama import Fore, Back, Style
+  from colorama import init
+except ModuleNotFoundError:
+  install("colorama")
+try:
+  import time
+except ModuleNotFoundError:
+  install("time")
+try:
+  from base64 import b64encode as b64
+  from base64 import b64decode
+  import base64
+except ModuleNotFoundError:
+  install("base64")
+try:
+  import pyfiglet
+except ModuleNotFoundError:
+  install("pyfiglet")
+try:
+  from pyxtension.Json import Json
+except ModuleNotFoundError:
+  install("pyxtension")
+try:
+  from random import choice as ch
+except ModuleNotFoundError:
+  install("random")
+
+
 #<---imports end--->
 
 #<---graphics setup--->
@@ -68,6 +101,8 @@ print("\n")
 print(Fore.BLUE + "Webhook Spammer [4]".center(os.get_terminal_size().columns))
 print("\n")
 print(Fore.BLUE + "Custom Status Message [5]".center(os.get_terminal_size().columns))
+print("\n")
+print(Fore.BLUE + "Red SelfBot [6]".center(os.get_terminal_size().columns))
 #<---options end--->
 
 
@@ -96,6 +131,8 @@ if inp == 4:
   spam_webhook()
 if inp == 5:
   custom_rpc()
+if inp == 6:
+  red_start()
 #<---main code end--->
 
 
