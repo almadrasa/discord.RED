@@ -21,7 +21,14 @@ try:
   from pyxtension.Json import Json
 except ModuleNotFoundError:
   install("pyxtension")
-
+try:
+  import datetime
+except ModuleNotFoundError:
+  install("datetime")
+try:
+  import time
+except ModuleNotFoundError:
+  install("time")
 #<---FUNCTION START--->
 def red_start():
   # defining clear function
@@ -53,12 +60,7 @@ def red_start():
   print(f"{Fore.RED}Testing auth...")
   discord = 'https://discordapp.com/api/users/@me'
   headers = {"Authorization":f"{a}"}
-  x = None
-  try:
-    x = requests.get(discord, headers=headers)
-  except:
-    print(f"{Fore.MAGENTA}Hey there! It looks like you still have the default github configuration for Red. Go into this file folder and set the red_token.txt file's content to your token. Enjoy!")
-    exit(0)
+  x = requests.get(discord, headers=headers)
   if int(x.status_code) == 401:
     print(f"{Fore.YELLOW}The provided token is invalid. Fill red_token.txt with a valid token, and then start Red again.")
     exit(0)
@@ -84,11 +86,11 @@ def red_start():
         "username" : "Red Calibration Sequence"
     }
   y = requests.post(b, json=hook_data)
-  if int(y.status_code) == 204:
-    print(f"{Fore.BLUE}Hook is valid, continuing Red's startup.")
-  elif int(y.status_code) == 404:
+  if int(y.status_code) == 400:
     print(f"{Fore.YELLOW}The webhook URL located in red_hook.txt is invalid. Replace it with a valid discord webhook, then Red can run.")
     exit(0)
+  else:
+    print(f"{Fore.BLUE}Hook is valid, continuing Red's startup.")
 
   # assigning globals
   try:
@@ -111,6 +113,15 @@ def red_start():
     }
       hook_data["embeds"] = [{"description" : f"{str2}", "title" : f"{str1}" }]
       requests.post(RESPONSE_HOOK, json=hook_data)
+    def embed_with_author(str1, str2, str3):
+      hook_data = {
+        "content" : f"<@{bot.gateway.session.user['id']}>",
+        "avatar_url" : "https://cdn.discordapp.com/attachments/876658708149571595/922628304735961148/unknown.png",
+        "username" : "Red"
+    }
+      hook_data["embeds"] = [{"description" : f"{str2}", "title" : f"{str1}", "thumbnail": { "url": f"{str3}" } }]
+      requests.post(RESPONSE_HOOK, json=hook_data)
+
     @bot.gateway.command
     def onready(resp):
       if resp.event.ready_supplemental: #ready_supplemental is sent onready
@@ -157,7 +168,7 @@ def red_start():
           elif content == "r.help":
             bot.deleteMessage(msg['channel_id'], msg['id'])
             you = bot.gateway.session.user['id']
-            embed_with("__Red's Commands:__", "- `r.help`: displays this message\n- `r.ping`: gets the client's latency (NOTE: you must wait about 30 secs. after starting Red to run `r.ping`.)\n- `r.dadjoke`: fetch a random dad joke from the [icanhazdadjoke API](https://icanhazdadjoke.com/api)\n- `r.ascii <text>`: converts the input text into figlet characters!\n- `r.xmr`: fetches the current price for Monero (in USD), using the [CryptoCompare API](https://www.cryptocompare.com/)!\n- `r.servinfo`: gets information about the current server\n- `r.nuke`: spam-pings the owner of whatever server you run it in (not really a nuke lol)\n- `r.disc-hacks`: provides you with a list of Discord's vulnerabilities!")
+            embed_with("__Red's Commands:__", "- `r.help`: displays this message\n- `r.ping`: gets the client's latency (NOTE: you must wait about 30 secs. after starting Red to run `r.ping`.)\n- `r.dadjoke`: fetch a random dad joke from the [icanhazdadjoke API](https://icanhazdadjoke.com/api)\n- `r.ascii <text>`: converts the input text into figlet characters!\n- `r.crypto`: fetches the current price for Monero, Bitcoin, and Ethereum (in USD), using the [CryptoCompare API](https://www.cryptocompare.com/)!\n- `r.servinfo`: gets information about the current server\n- `r.nuke`: spam-pings the owner of whatever server you run it in (not really a nuke lol)\n- `r.disc-hacks`: provides you with a list of Discord's vulnerabilities!\n- `r.userinfo <userid>`: gives you information about a certain user; using a custom [discord.id API](https://discordid.13-05.repl.co/)")
 
 
           elif content == "r.ping":
@@ -200,10 +211,12 @@ def red_start():
             respond_with(f"```{converted}```")
 
 
-          elif content == "r.xmr":
+          elif content == "r.crypto":
             bot.deleteMessage(msg['channel_id'], msg['id'])
             u = requests.get('https://min-api.cryptocompare.com/data/price?fsym=XMR&tsyms=USD')
-            embed_with("Current Monero (XMR) Price", "$" + str(u.text).replace('{"USD":', '').replace('}', '') + f" USD\n\nCheck out some of [Kraken's charts](https://trade.kraken.com/charts/KRAKEN:XMR-USD?)!")
+            v = requests.get('https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD')
+            w = requests.get('https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=USD')
+            embed_with("Current Crypto Prices", "Monero: $" + str(u.text).replace('{"USD":', '').replace('}', '') + f" USD\nBitcoin: $" + str(v.text).replace('{"USD":', '').replace('}', '') + " USD\nEthereum: $" + str(w.text).replace('{"USD":', '').replace('}', '') + " USD")
 
 
           elif content == "r.nuke":
@@ -226,9 +239,21 @@ def red_start():
             if choiceof.lower() == "n":
               print(f"{Fore.BLUE}Alright, Red won't nuke that channel.")
               embed_with("Channel Nuke Status", "The nuke was aborted.")
+
+
           elif content == "r.disc-hacks":
             bot.deleteMessage(msg['channel_id'], msg['id'])
             embed_with("Looking for ways to exploit Discord?", "Well, I have a github repository [here](https://github.com/13-05/disc-python-hacks) that exposes all of Discord's weaknesses. Enjoy!")
+
+          elif content.startswith("r.userinfo"):
+            bot.deleteMessage(msg['channel_id'], msg['id'])
+            usr = content[10:]
+            inf = requests.get(f'https://discordid.13-05.repl.co/api/{usr}')
+            full = Json(inf.text)
+            created = int(full.user.createdTimestamp)/1000.0
+            time_obj = datetime.datetime.fromtimestamp(created).strftime('%Y-%m-%d %H:%M:%S.%f')
+            embed_with_author(f"{full.user.tag}'s Stats", f"Username: {full.user.tag}\nBot?: {full.user.bot}\nCreated at: {time_obj}", f"{full.user.displayAvatarURL}")
+            
 
 
 
