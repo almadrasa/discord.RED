@@ -109,7 +109,7 @@ print(Fore.BLUE + "Webhook Spammer [4]".center(os.get_terminal_size().columns))
 print("\n")
 print(Fore.BLUE + "Custom Status Message [5]".center(os.get_terminal_size().columns))
 print("\n")
-print(Fore.BLUE + "Red SelfBot [6]".center(os.get_terminal_size().columns))
+print(Fore.RED + "-- Red SelfBot [6] --".center(os.get_terminal_size().columns))
 #<---options end--->
 
 
