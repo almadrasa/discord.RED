@@ -146,7 +146,7 @@ def red_start():
           print(Fore.BLUE)
           print(f"Red is up and running;\n".center(col_size))
           print(Fore.RED)
-          print(f"run \"help\" in discord for a list of usable commands.".center(col_size))
+          print(f"run \"r.help\" in discord for a list of usable commands.".center(col_size))
           print("\n\n")
           print("(CTRL + C AT ANY TIME TO STOP RED)".center(col_size))
         welcome()
