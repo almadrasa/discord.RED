@@ -22,5 +22,5 @@
   <br />
   <strong>r.disc-hacks</strong>: provides you with a list of Discord's vulnerabilities
   <br />
-  <strong>r.userinfo [USERID]</strong>: fetches crypto prices with the <a href="https://www.cryptocompare.com/">CryptoCompare</a> API
+  <strong>r.userinfo [USERID]</strong>: gets information about a certain user with a custom <a href="https://discordid.13-05.repl.co/">discord.id</a> API
 </details>
