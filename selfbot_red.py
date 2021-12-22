@@ -2,6 +2,7 @@
 import os
 import sys
 import requests
+import json
 
 def install(package):
   os.system(f"{sys.executable} -m pip install {package}")
@@ -70,11 +71,7 @@ def red_start():
   print(f"{Fore.RED}Testing auth...")
   discord = 'https://discordapp.com/api/users/@me'
   headers = {"Authorization":f"{a}"}
-  x = None
-  try:
-    x = requests.get(discord, headers=headers)
-  except:
-    print(f"{Fore.MAGENTA}Hey there! It looks like you still have the default github configuration for Red. Go into this file folder and set the red_token.txt file's content to your token. Enjoy!")
+  x = requests.get(discord, headers=headers)
   if int(x.status_code) == 401:
     print(f"{Fore.YELLOW}The provided token is invalid. Fill red_token.txt with a valid token, and then start Red again.")
     exit(0)
@@ -280,6 +277,15 @@ def red_start():
             OUTPUTS = ['Maybe, just wait and see.', 'Definitely not.', 'Yes.']
             choice = random.choice(OUTPUTS)
             embed_with_author(f"{question}", f"{choice}", "https://raw.githubusercontent.com/13-05/discord.RED/main/images/8ball.webp")
+
+
+          elif content == "r.advice":
+            bot.deleteMessage(msg['channel_id'], msg['id'])
+            useragents = ['Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0)','Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 'Mozilla/5.0 (Macintosh; U; PPC Mac OS X; en) AppleWebKit/125.2 (KHTML, like Gecko) Safari/125.8', 'Mozilla/5.0 (compatible; Konqueror/3.5; Linux) KHTML/3.5.10 (like Gecko) (Kubuntu)', 'Mozilla/5.0 (Windows; U; Windows XP) Gecko MultiZilla/1.6.1.0a']
+            USERAGENT = random.choice(useragents)
+            req = requests.get('https://api.adviceslip.com/advice')
+            adv = json.loads(req.text)
+            embed_with_author("A Little Advice...", f"{adv['slip']['advice']}", "https://raw.githubusercontent.com/13-05/discord.RED/main/images/fortune-cookie.png")
 
 
 
