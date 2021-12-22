@@ -2,6 +2,9 @@
 
 
 #<---imports start--->
+import os
+import sys
+
 def install(package):
   os.system(f"{sys.executable} -m pip install {package}")
 
@@ -54,8 +57,7 @@ try:
 except ModuleNotFoundError:
   install("webbrowser")
   
-import os
-import sys
+
 import requests
 from token_bruteforce import bruteforce_token
 from token_login import tokenlogin
