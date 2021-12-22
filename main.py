@@ -6,6 +6,7 @@ import os
 import sys
 
 def install(package):
+  print("Installing required package...")
   os.system(f"{sys.executable} -m pip install {package}")
 
 try:
@@ -56,6 +57,10 @@ try:
   import webbrowser
 except ModuleNotFoundError:
   install("webbrowser")
+try:
+  import selenium
+except:
+  install("selenium")
   
 
 import requests
