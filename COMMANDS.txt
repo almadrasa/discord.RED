@@ -1,0 +1,10 @@
+--- TYPE THE KEY IN DSC.RED TO RUN THAT COMMAND ---
+
+KEY | CMD NAME
+  0 | Exit
+  1 | Token Bruteforcer
+  2 | Token Login
+  3 | UserID Lookup
+  4 | Webhook Spammer
+  5 | Custom Status Message
+  6 | Red Selfbot
