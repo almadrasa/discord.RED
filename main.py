@@ -12,7 +12,8 @@ def install(package):
 try:
   import discum
 except ModuleNotFoundError:
-  install("discum")
+  print("Installing required package...")
+  os.system(f"{sys.executable} -m pip install --user --upgrade git+https://github.com/Merubokkusu/Discord-S.C.U.M.git#egg=discum")
 try:
   import asyncio
 except ModuleNotFoundError:
