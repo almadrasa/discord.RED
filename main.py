@@ -2,16 +2,6 @@
 
 
 #<---imports start--->
-import os
-import sys
-import requests
-from token_bruteforce import bruteforce_token
-from token_login import tokenlogin
-from userid_info import lookup
-from hook_spammer import spam_webhook
-from red_rpc import custom_rpc
-from selfbot_red import red_start
-
 def install(package):
   os.system(f"{sys.executable} -m pip install {package}")
 
@@ -63,6 +53,16 @@ try:
   import webbrowser
 except ModuleNotFoundError:
   install("webbrowser")
+  
+import os
+import sys
+import requests
+from token_bruteforce import bruteforce_token
+from token_login import tokenlogin
+from userid_info import lookup
+from hook_spammer import spam_webhook
+from red_rpc import custom_rpc
+from selfbot_red import red_start
 
 #<---imports end--->
 
