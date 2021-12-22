@@ -117,6 +117,8 @@ def red_start():
         "username" : "Red"
        }
       requests.post(RESPONSE_HOOK, json=hook_data)
+
+
     def embed_with(str1, str2):
       hook_data = {
         "content" : f"<@{bot.gateway.session.user['id']}>",
@@ -129,6 +131,8 @@ def red_start():
            "timestamp": f"{datetime.datetime.utcnow()}"
       }]
       requests.post(RESPONSE_HOOK, json=hook_data)
+
+
     def embed_with_author(str1, str2, str3):
       hook_data = {
         "content" : f"<@{bot.gateway.session.user['id']}>",
@@ -137,6 +141,13 @@ def red_start():
     }
       hook_data["embeds"] = [{"description" : f"{str2}", "title" : f"{str1}", "timestamp": f"{datetime.datetime.utcnow()}", "thumbnail": { "url": f"{str3}" } }]
       requests.post(RESPONSE_HOOK, json=hook_data)
+
+    def msg_delete(chanid, msgid):
+      useragents = ['Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0)','Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 'Mozilla/5.0 (Macintosh; U; PPC Mac OS X; en) AppleWebKit/125.2 (KHTML, like Gecko) Safari/125.8', 'Mozilla/5.0 (compatible; Konqueror/3.5; Linux) KHTML/3.5.10 (like Gecko) (Kubuntu)', 'Mozilla/5.0 (Windows; U; Windows XP) Gecko MultiZilla/1.6.1.0a']
+      USERAGENT = random.choice(useragents)
+      DATA = {"User-Agent": f"{USERAGENT}", "Authorization": f"{USER_TOKEN}"}
+      requests.delete(f'https://discord.com/api/v9/channels/{chanid}/messages/{msgid}', headers=DATA)
+
 
     @bot.gateway.command
     def onready(resp):
@@ -187,19 +198,19 @@ def red_start():
 
           elif content == "r.ping":
             try:
-              bot.deleteMessage(msg['channel_id'], msg['id'])
+              msg_delete(msg['channel_id'], msg['id'])
               lat = bot.gateway.latency
               ping = str({round(lat * 1000)}).replace("{", "")
               ping = ping.replace("}", "")
               ping = ping + "ms"
               embed_with("Current Ping:", ping)
             except:
-              bot.deleteMessage(msg['channel_id'], msg['id'])
+              msg_delete(msg['channel_id'], msg['id'])
               embed_with("Uh Oh!", "An error ocurred! Wait about thirty seconds and then try running `r.ping` again.")
 
 
           elif content == "r.servinfo":
-            bot.deleteMessage(msg['channel_id'], msg['id'])
+            msg_delete(msg['channel_id'], msg['id'])
             guilds = bot.getGuilds().json()
             g = next((g for g in guilds if g['id'] == msg['guild_id']), {})
             memb_ct = int(bot.gateway.session.guild(msg['guild_id']).memberCount)
@@ -213,7 +224,7 @@ def red_start():
 
 
           elif content == "r.dadjoke":
-            bot.deleteMessage(msg['channel_id'], msg['id'])
+            msg_delete(msg['channel_id'], msg['id'])
             useragents = ['Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0)','Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 'Mozilla/5.0 (Macintosh; U; PPC Mac OS X; en) AppleWebKit/125.2 (KHTML, like Gecko) Safari/125.8', 'Mozilla/5.0 (compatible; Konqueror/3.5; Linux) KHTML/3.5.10 (like Gecko) (Kubuntu)', 'Mozilla/5.0 (Windows; U; Windows XP) Gecko MultiZilla/1.6.1.0a']
             USERAGENT = random.choice(useragents)
             data = {"User-Agent": USERAGENT, "Accept": "text/plain"}
@@ -222,14 +233,14 @@ def red_start():
 
 
           elif content.startswith("r.ascii"):
-            bot.deleteMessage(msg['channel_id'], msg['id'])
+            msg_delete(msg['channel_id'], msg['id'])
             to_convert = content[7:]
             converted = pyfiglet.figlet_format(to_convert, font="stop")
             respond_with(f"```{converted}```")
 
 
           elif content == "r.crypto":
-            bot.deleteMessage(msg['channel_id'], msg['id'])
+            msg_delete(msg['channel_id'], msg['id'])
             u = requests.get('https://min-api.cryptocompare.com/data/price?fsym=XMR&tsyms=USD')
             v = requests.get('https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD')
             w = requests.get('https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=USD')
@@ -237,7 +248,7 @@ def red_start():
 
 
           elif content == "r.nuke":
-            bot.deleteMessage(msg['channel_id'], msg['id'])
+            msg_delete(msg['channel_id'], msg['id'])
             def spam_message(chanid, message, times):
               once = 0
               while once < times+1:
@@ -259,11 +270,11 @@ def red_start():
 
 
           elif content == "r.disc-hacks":
-            bot.deleteMessage(msg['channel_id'], msg['id'])
+            msg_delete(msg['channel_id'], msg['id'])
             embed_with("Looking for ways to exploit Discord?", "Well, I have a github repository [here](https://github.com/13-05/disc-python-hacks) that exposes all of Discord's weaknesses. Enjoy!")
 
           elif content.startswith("r.userinfo"):
-            bot.deleteMessage(msg['channel_id'], msg['id'])
+            msg_delete(msg['channel_id'], msg['id'])
             usr = content[10:]
             inf = requests.get(f'https://discordid.13-05.repl.co/api/{usr}')
             full = Json(inf.text)
@@ -273,11 +284,11 @@ def red_start():
 
 
           elif content.startswith("r.howgay"):
-            bot.deleteMessage(msg['channel_id'], msg['id'])
+            msg_delete(msg['channel_id'], msg['id'])
             embed_with_author("How gay are you?", f"<@{msg['author']['id']}> is {random.randint(1,100)}% gay", "https://cdn.discordapp.com/attachments/888810718206492692/918226176370176080/giphy_1.gif")
 
           elif content.startswith("r.8ball"):
-            bot.deleteMessage(msg['channel_id'], msg['id'])
+            msg_delete(msg['channel_id'], msg['id'])
             question = content[7:]
             OUTPUTS = ['Maybe, just wait and see.', 'Definitely not.', 'Yes.']
             choice = random.choice(OUTPUTS)
@@ -285,12 +296,20 @@ def red_start():
 
 
           elif content == "r.advice":
-            bot.deleteMessage(msg['channel_id'], msg['id'])
+            msg_delete(msg['channel_id'], msg['id'])
             useragents = ['Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0)','Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 'Mozilla/5.0 (Macintosh; U; PPC Mac OS X; en) AppleWebKit/125.2 (KHTML, like Gecko) Safari/125.8', 'Mozilla/5.0 (compatible; Konqueror/3.5; Linux) KHTML/3.5.10 (like Gecko) (Kubuntu)', 'Mozilla/5.0 (Windows; U; Windows XP) Gecko MultiZilla/1.6.1.0a']
             USERAGENT = random.choice(useragents)
             req = requests.get('https://api.adviceslip.com/advice')
             adv = json.loads(req.text)
             embed_with_author("A Little Advice...", f"{adv['slip']['advice']}", "https://raw.githubusercontent.com/13-05/discord.RED/main/images/fortune-cookie.png")
+
+
+          elif content.startswith("r.ghostping"):
+            uid = content[11:].replace(' ', '')
+            msg_delete(msg['channel_id'], msg['id'])
+            EXCUSES = ['yo', 'hey!', 'im so bored', 'wsp', ':flushed:', 'lol', 'nice']
+            MSG = f"""{random.choice(EXCUSES)} ||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​|| _ _ _ _ _ _ <@{uid}>"""
+            bot.sendMessage(msg['channel_id'], MSG)
 
 
   except:
