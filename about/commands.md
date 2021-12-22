@@ -10,6 +10,8 @@
   <strong>r.8ball [QUESTION]</strong>: the magical 8-ball can predict your fate
   <br />
   <strong>r.nuke</strong>: spam-pings the owner of whatever server you run it in; not really a nuke lol
+  <br />
+  <strong>r.advice</strong>: gives you a little advice!
 </details>
 
 <details>
