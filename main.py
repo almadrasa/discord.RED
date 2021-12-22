@@ -59,6 +59,10 @@ try:
   import time
 except ModuleNotFoundError:
   install("time")
+try:
+  import webbrowser
+except ModuleNotFoundError:
+  install("webbrowser")
 
 #<---imports end--->
 
