@@ -37,5 +37,7 @@ def lookup():
     print(f"Discriminator: {discrim}")
     print(f"Bot?: {isbot}")
     print(f"Created At: {when}")
-
-  client.run(bot_token)
+  try:
+    client.run(bot_token)
+  except:
+    print(f"{Fore.RED}A fatal error ocurred. Make sure the bot_token.txt file has a valid bot token. If it does contain a valid token, open a github issue.")
