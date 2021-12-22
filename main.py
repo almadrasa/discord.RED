@@ -61,6 +61,10 @@ try:
   import selenium
 except:
   install("selenium")
+try:
+  import discord
+except:
+  install("discord.py-self")
   
 
 import requests
