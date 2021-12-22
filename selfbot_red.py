@@ -70,7 +70,11 @@ def red_start():
   print(f"{Fore.RED}Testing auth...")
   discord = 'https://discordapp.com/api/users/@me'
   headers = {"Authorization":f"{a}"}
-  x = requests.get(discord, headers=headers)
+  x = None
+  try:
+    x = requests.get(discord, headers=headers)
+  except:
+    print(f"{Fore.MAGENTA}Hey there! It looks like you still have the default github configuration for Red. Go into this file folder and set the red_token.txt file's content to your token. Enjoy!")
   if int(x.status_code) == 401:
     print(f"{Fore.YELLOW}The provided token is invalid. Fill red_token.txt with a valid token, and then start Red again.")
     exit(0)
