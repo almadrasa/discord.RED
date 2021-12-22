@@ -101,21 +101,7 @@ welcome()
 #<---display pretty stuff end--->
 
 #<---options start--->
-print(Fore.CYAN + "Available tools (input the number at the side):".center(os.get_terminal_size().columns))
-print("\n\n")
-print(Fore.BLUE + "Exit [0]".center(os.get_terminal_size().columns))
-print("\n")
-print(Fore.BLUE + "Token Bruteforcer [1]".center(os.get_terminal_size().columns))
-print("\n")
-print(Fore.BLUE + "Login With a Token [2]".center(os.get_terminal_size().columns))
-print("\n")
-print(Fore.BLUE + "UserID Lookup [3]".center(os.get_terminal_size().columns))
-print("\n")
-print(Fore.BLUE + "Webhook Spammer [4]".center(os.get_terminal_size().columns))
-print("\n")
-print(Fore.BLUE + "Custom Status Message [5]".center(os.get_terminal_size().columns))
-print("\n")
-print(Fore.RED + "-- Red SelfBot [6] --".center(os.get_terminal_size().columns))
+os.startfile("COMMANDS.txt")
 #<---options end--->
 
 
