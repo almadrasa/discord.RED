@@ -15,7 +15,7 @@
 3) UserID Lookup
 4) Webhook Spammer
 5) Custom Status Message
-6) Red Selfbot (not fully implemented yet, but it's there)
+6) Red Selfbot [(not fully implemented yet, but it's there)](https://github.com/13-05/discord.RED/blob/main/about/commands.md)
 
 ## TODO
 - [x] Red Selfbot (being worked on now!!)
