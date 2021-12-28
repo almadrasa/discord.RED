@@ -193,7 +193,7 @@ def red_start():
 
           elif content == "r.help":
             bot.deleteMessage(msg['channel_id'], msg['id'])
-            webbrowser.open('https://github.com/13-05/discord.RED/blob/main/about/commands.md', new=2)
+            webbrowser.open('https://13-05.github.io/dsc.red/commands', new=2)
 
 
           elif content == "r.ping":
