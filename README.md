@@ -27,11 +27,11 @@
 - [ ] Account Disabler
 
 ## Installation & Use
-\> `git clone https://github.com/13-05/discord.RED.git`
-<br />
-\> `cd discord.RED`
-<br />
-\> `python3 main.py`
+```bash
+> git clone https://github.com/13-05/discord.RED.git
+> cd discord.RED
+> python3 main.py
+```
 
 ## Community
 Join the [support server](https://discord.gg/XecbDdhfUD)!<br />
