@@ -60,15 +60,18 @@ except ModuleNotFoundError:
   install("webbrowser")
 try:
   import selenium
-except:
+except ModuleNotFoundError:
   install("selenium")
 try:
   import discord
-except:
+except ModuleNotFoundError:
   install("discord.py-self")
-  
+try:
+  import requests
+except ModuleNotFoundError:
+  install("requests")
 
-import requests
+
 from token_bruteforce import bruteforce_token
 from token_login import tokenlogin
 from userid_info import lookup
