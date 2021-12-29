@@ -22,7 +22,7 @@
 - [x] Red Selfbot (being worked on now!!)
 - [x] UserID Lookup
 - [x] Webhook Spammer
-- [ ] Webhook URL Bruteforcer
+###### Webhook URL Bruteforcer *is pointless as even an idea now imo*
 - [ ] Message Logger
 - [x] Custom Status Message (RPC?)
 - [x] Token Invalidator (acc disabler)
