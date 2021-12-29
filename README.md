@@ -16,6 +16,7 @@
 4) Webhook Spammer
 5) Custom Status Message
 6) Red Selfbot [(not fully implemented yet, but it's there)](https://13-05.github.io/dsc.red/commands)
+7) Token Invalidator (acc disabler)
 
 ## TODO
 - [x] Red Selfbot (being worked on now!!)
@@ -24,7 +25,7 @@
 - [ ] Webhook URL Bruteforcer
 - [ ] Message Logger
 - [x] Custom Status Message (RPC?)
-- [ ] Account Disabler
+- [x] Token Invalidator (acc disabler)
 
 ## Installation & Use
 ```bash
