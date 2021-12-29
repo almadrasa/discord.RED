@@ -8,3 +8,4 @@ KEY | CMD NAME
   4 | Webhook Spammer
   5 | Custom Status Message
   6 | Red Selfbot
+  7 | Token Invalidator
