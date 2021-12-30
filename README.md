@@ -24,7 +24,7 @@
 - [x] Webhook Spammer
 - [x] Custom Status Message (RPC?)
 - [x] Token Invalidator (acc disabler)
-###### Webhook URL Bruteforcer *is pointless as even an idea now imo*, and Message Logger *can be compacted into the red selfbot imo.)
+###### Webhook URL Bruteforcer *is pointless as even an idea now imo*, and Message Logger *can be compacted into the red selfbot imo.*)
 
 ## Installation & Use
 ```bash
