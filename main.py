@@ -66,12 +66,9 @@ try:
   import discord
 except:
   install("discord.py-self")
-try:
-  import requests
-except ModuleNotFoundError:
-  install("requests")
+  
 
-
+import requests
 from token_bruteforce import bruteforce_token
 from token_login import tokenlogin
 from userid_info import lookup
@@ -94,9 +91,9 @@ print(Fore.RED) # set color red
 print(Back.BLACK)
 print(colorama.ansi.clear_screen())
 print(Style.BRIGHT)
-try:
+if os.name == 'nt':
   os.system("title dsc.RED")
-except:
+else:
   pass # the system is running linux.
 
 #<---end of graphics setup--->
@@ -124,7 +121,7 @@ except:
   FILE = open("COMMANDS.txt", "r")
   CMDSS = FILE.read()
   FILE.close()
-  print(f"{Fore.MAGENTA}{CMDSS}") # system is running linux
+  print(f"{Fore.MAGENTA}{CMDSS}"center(os.get_terminal_size().columns)) # system is running linux, so we just print the commands. it's not as pretty, though.
 #<---options end--->
 
 
