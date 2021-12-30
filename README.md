@@ -22,10 +22,9 @@
 - [x] Red Selfbot (being worked on now!!)
 - [x] UserID Lookup
 - [x] Webhook Spammer
-- [ ] Message Logger
 - [x] Custom Status Message (RPC?)
 - [x] Token Invalidator (acc disabler)
-###### Webhook URL Bruteforcer *is pointless as even an idea now imo*
+###### Webhook URL Bruteforcer *is pointless as even an idea now imo*, and Message Logger *can be compacted into the red selfbot imo.)
 
 ## Installation & Use
 ```bash
