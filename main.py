@@ -120,10 +120,11 @@ welcome()
 try:
   os.startfile("COMMANDS.txt") # tries open the commands file in its default program
 except:
-  FILE = open("COMMANDS.txt", "r")
-  CMDSS = FILE.read()
-  FILE.close()
-  print(f"{Fore.MAGENTA}Uh Oh! You're on Linux, so you have to manually launch the commands. Go into this program's directory, and open \"COMMANDS.txt\" to view the usable commands!".center(os.get_terminal_size().columns)) # system is running linux, so we just tell them to manually open it.
+  if '\\' in str(os.getcwd()):
+    signal = '\\'
+  if '/' in str(os.getcwd()):
+    signal = '/'
+  print(f"{Fore.MAGENTA}Commands lie at {os.getcwd()}{signal}COMMANDS.txt".center(os.get_terminal_size().columns)) # system is running linux, so we just tell them to manually open it.
 #<---options end--->
 
 
