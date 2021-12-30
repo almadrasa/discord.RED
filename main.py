@@ -60,11 +60,11 @@ except ModuleNotFoundError:
   install("webbrowser")
 try:
   import selenium
-except ModuleNotFoundError:
+except:
   install("selenium")
 try:
   import discord
-except ModuleNotFoundError:
+except:
   install("discord.py-self")
 try:
   import requests
@@ -83,19 +83,22 @@ from token_locker import ban_token
 #<---imports end--->
 
 #<---graphics setup--->
-os.system('cls')
-os.system('color 7') # set color to windows default
-init() # start colorama
-print(Back.BLACK)
-print(colorama.ansi.clear_screen())
-print(Style.BRIGHT)
-os.system("title dsc.RED")
-
 def clear():
   if os.name == 'nt':
     os.system('cls')
   else:
     os.system('clear')
+clear()
+init() # start colorama
+print(Fore.RED) # set color red
+print(Back.BLACK)
+print(colorama.ansi.clear_screen())
+print(Style.BRIGHT)
+try:
+  os.system("title dsc.RED")
+except:
+  pass # the system is running linux.
+
 #<---end of graphics setup--->
 
 #<--display pretty stuff start--->
@@ -115,7 +118,13 @@ welcome()
 #<---display pretty stuff end--->
 
 #<---options start--->
-os.startfile("COMMANDS.txt")
+try:
+  os.startfile("COMMANDS.txt") # tries open the commands file in its default program
+except:
+  FILE = open("COMMANDS.txt", "r")
+  CMDSS = FILE.read()
+  FILE.close()
+  print(f"{Fore.MAGENTA}{CMDSS}") # system is running linux
 #<---options end--->
 
 
@@ -129,10 +138,7 @@ print(Fore.BLUE + a2 + a, end='')
 inp = int(input())
 
 if inp == 0:
-  if os.name == 'nt':
-    os.system('cls')
-  else:
-    os.system('clear')
+  clear()
   exit(0)
 if inp == 1:
   bruteforce_token()
