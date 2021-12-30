@@ -121,7 +121,7 @@ except:
   FILE = open("COMMANDS.txt", "r")
   CMDSS = FILE.read()
   FILE.close()
-  print(f"{Fore.MAGENTA}{CMDSS}"center(os.get_terminal_size().columns)) # system is running linux, so we just print the commands. it's not as pretty, though.
+  print(f"{Fore.MAGENTA}{CMDSS}".center(os.get_terminal_size().columns)) # system is running linux, so we just print the commands. it's not as pretty, though.
 #<---options end--->
 
 
