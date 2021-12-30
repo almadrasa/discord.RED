@@ -25,6 +25,7 @@
 - [x] Custom Status Message (RPC?)
 - [x] Token Invalidator (acc disabler)
 - [ ] Token Grabber/Token Grabber Generator
+- [ ] Token Checker (checks if a token is valid, then gives you information about it)
 ###### Webhook URL Bruteforcer *is pointless as even an idea now imo*, and Message Logger *can be compacted into the red selfbot imo.*
 
 ## Installation & Use
