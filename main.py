@@ -91,6 +91,7 @@ print(Fore.RED) # set color red
 print(Back.BLACK)
 print(colorama.ansi.clear_screen())
 print(Style.BRIGHT)
+clear()
 if os.name == 'nt':
   os.system("title dsc.RED")
 else:
@@ -100,6 +101,7 @@ else:
 
 #<--display pretty stuff start--->
 def welcome():
+  clear()
   print(Fore.RED + ".%%%%%....%%%%....%%%%...........%%%%%...%%%%%%..%%%%%..".center(os.get_terminal_size().columns))
   print(Fore.RED + ".%%..%%..%%......%%..%%..........%%..%%..%%......%%..%%.".center(os.get_terminal_size().columns))
   print(Fore.RED + ".%%..%%...%%%%...%%..............%%%%%...%%%%....%%..%%.".center(os.get_terminal_size().columns))
@@ -121,7 +123,7 @@ except:
   FILE = open("COMMANDS.txt", "r")
   CMDSS = FILE.read()
   FILE.close()
-  print(f"{Fore.MAGENTA}{CMDSS}".center(os.get_terminal_size().columns)) # system is running linux, so we just print the commands. it's not as pretty, though.
+  print(f"{Fore.MAGENTA}Uh Oh! You're on Linux, so you have to manually launch the commands. Go into this program's directory, and open \"COMMANDS.txt\" to view the usable commands!".center(os.get_terminal_size().columns)) # system is running linux, so we just tell them to manually open it.
 #<---options end--->
 
 
