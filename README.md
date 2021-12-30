@@ -29,8 +29,18 @@
 ###### Webhook URL Bruteforcer *is pointless as even an idea now imo*, and Message Logger *can be compacted into the red selfbot imo.*
 
 ## Installation & Use
+### Downloading DSC.RED
 ```bash
 > git clone https://github.com/13-05/discord.RED.git
+```
+
+### Config Before Use
+- Put a user-token in `red_token.txt`
+- Put a webhook url in `red_hook.txt`
+- Put a bot-token in `bot_token.txt`
+
+### Use
+```bash
 > cd discord.RED
 > python3 main.py
 ```
